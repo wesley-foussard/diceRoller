@@ -16,7 +16,8 @@ function dice() {
   // je crée une div pour le dé
   const diceDiv = document.createElement("div");
   // je lui donne la classe dice
-  diceDiv.className = "dice";
+  diceDiv.className =
+    "dice"; /* className écrase toutes les autres classes, préférer classList.add
   // j'isole la div player (pas nécéssaire vraisemblablement)
   //   const player = document.getElementById("player");
   // je lui ajoute la div `dice`
@@ -35,16 +36,28 @@ function dice() {
   /*---------DICE--------------- */
   //on génère le tirage du dé
   let diceValue = getRandomNumber(1, 6); //ici /!\
-  // console.log(diceValue);
+  // console.log(diceValue); /* on peut jouer avec debugger au lieu de console.log, plus souple pour manipuler le code
   //on change la position du sprite en fonction du tirage du dé
   let dicePosX = -(diceValue * 100 - 100);
   // console.log(dicePosX);
   diceDiv.style.backgroundPositionX = `${dicePosX}px`; //-(${diceValue} * 100 - 100)`
 }
+function createPlayer() {
+  const playerElm = document.createElement("div");
+  // On doit ajouter une class et un id
+  playerElm.classList.add("board");
+  playerElm.id = "dealer";
+
+  // Je l'ajoute dans mon DOM dans ma div avec l'id app
+  const appElm = document.getElementById("app");
+  appElm.append(playerElm);
+}
+
+createPlayer();
 /* Main*/
 
 let diceThrows = parseInt(prompt("Combien de dés voulez-vous lancer"));
 
 for (i = 0; i < diceThrows; i++) {
-  dice();
+  dice(player);
 }
