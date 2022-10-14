@@ -34,14 +34,15 @@ function dice() {
 
   /*---------DICE--------------- */
   //on génère le tirage du dé
-  let diceValue = getRandomNumber(1, 6);
+  let diceValue = getRandomNumber(1, 6); //ici /!\
   // console.log(diceValue);
   //on change la position du sprite en fonction du tirage du dé
   let dicePosX = -(diceValue * 100 - 100);
   // console.log(dicePosX);
-  diceDiv.style.backgroundPositionX = `${dicePosX}px`;
+  diceDiv.style.backgroundPositionX = `${dicePosX}px`; //-(${diceValue} * 100 - 100)`
 }
 /* Main*/
+
 let diceThrows = parseInt(prompt("Combien de dés voulez-vous lancer"));
 
 for (i = 0; i < diceThrows; i++) {
